@@ -1,2 +1,1 @@
-# DnD_CharacterCreation
-Creates a random D&amp;D character
+Run Main.java to get a random class, race, and background. It also rolls your beginning stats.
