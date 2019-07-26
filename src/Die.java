@@ -1,4 +1,5 @@
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Random;
 
 // Rolls a single die
@@ -57,6 +58,33 @@ public class Die {
         }
 
         return rollValue;
+    }
+
+    public String rollStats() {
+
+        StringBuilder stats = new StringBuilder();
+        ArrayList<Integer> statValues = new ArrayList<Integer>();
+
+        // Roll for the 6 stat values
+        for (int i=0; i<6; ++i) {
+
+            // Rolls 4d6 and takes out the lowest one
+            int lowestValue = Integer.MAX_VALUE;
+            int statTotal = 0;
+            for (int j=0; j<4; ++j) {
+                int roll = roll("1d6");
+                statTotal += roll;
+                if (lowestValue > roll) lowestValue = roll;
+                statValues.add(roll);
+            }
+
+            statTotal -= lowestValue;
+            stats.append(Integer.toString(statTotal));
+
+            if (i < 5) stats.append(" ");
+        }
+
+        return stats.toString();
     }
 
 }
